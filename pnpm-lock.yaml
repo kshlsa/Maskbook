@@ -678,16 +678,21 @@ importers:
     specifiers:
       '@masknet/plugin-infra': workspace:*
       '@masknet/web3-providers': workspace:*
+      '@masknet/web3-shared-base': workspace:*
+      '@masknet/web3-shared-evm': workspace:*
       '@rollup/plugin-commonjs': ^21.0.1
       '@rollup/plugin-json': ^4.1.0
       '@rollup/plugin-node-resolve': ^13.0.6
       '@rollup/plugin-typescript': ^8.3.0
       rollup: ^2.60.1
+      rollup-plugin-terser: ^7.0.2
       rollup-plugin-typescript2: ^0.31.1
       urlcat: ^2.0.4
     dependencies:
       '@masknet/plugin-infra': link:../plugin-infra
       '@masknet/web3-providers': link:../web3-providers
+      '@masknet/web3-shared-base': link:../web3-shared/base
+      '@masknet/web3-shared-evm': link:../web3-shared/evm
       urlcat: 2.0.4
     devDependencies:
       '@rollup/plugin-commonjs': 21.0.1_rollup@2.60.1
@@ -695,6 +700,7 @@ importers:
       '@rollup/plugin-node-resolve': 13.0.6_rollup@2.60.1
       '@rollup/plugin-typescript': 8.3.0_e8432963bdc1b246a199a2a9d30c1c7a
       rollup: 2.60.1
+      rollup-plugin-terser: 7.0.2_rollup@2.60.1
       rollup-plugin-typescript2: 0.31.1_e8432963bdc1b246a199a2a9d30c1c7a
 
   packages/public-api:
@@ -1099,13 +1105,6 @@ packages:
       '@babel/highlight': 7.16.0
     dev: true
 
-  /@babel/code-frame/7.15.8:
-    resolution: {integrity: sha512-2IAnmn8zbvC/jKYhq5Ki9I+DwjlrtMPUCH/CpHvqI4dNnlwHwsxoIhlc8WcYY5LSYknXQtAlFYuHfqAFCvQ4Wg==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/highlight': 7.14.5
-    dev: true
-
   /@babel/code-frame/7.16.0:
     resolution: {integrity: sha512-IF4EOMEV+bfYwOmNxGzSnjR2EmQod7f1UXOpZM3l4i4o4QNwzjtJAu/HxdjHq0aYBvdqMuQEY1eg0nqW9ZPORA==}
     engines: {node: '>=6.9.0'}
@@ -1475,15 +1474,6 @@ packages:
       '@babel/types': 7.16.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /@babel/highlight/7.14.5:
-    resolution: {integrity: sha512-qf9u2WFWVV0MppaL877j2dBtQIDgmidgjGk5VIMw3OadXvYaXn66U1BFlH2t4+t3i+8PhedppRv+i40ABzd+gg==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/helper-validator-identifier': 7.15.7
-      chalk: 2.4.2
-      js-tokens: 4.0.0
     dev: true
 
   /@babel/highlight/7.16.0:
@@ -20719,11 +20709,13 @@ packages:
     peerDependencies:
       rollup: ^2.0.0
     dependencies:
-      '@babel/code-frame': 7.15.8
+      '@babel/code-frame': 7.16.0
       jest-worker: 26.6.2
       rollup: 2.60.1
       serialize-javascript: 4.0.0
-      terser: 5.8.0
+      terser: 5.10.0
+    transitivePeerDependencies:
+      - acorn
     dev: true
 
   /rollup-plugin-typescript2/0.31.1_e8432963bdc1b246a199a2a9d30c1c7a:
@@ -21367,13 +21359,6 @@ packages:
     dependencies:
       source-map: 0.5.7
     dev: false
-
-  /source-map-support/0.5.20:
-    resolution: {integrity: sha512-n1lZZ8Ve4ksRqizaBQgxXDgKwttHDhyfQjA6YZZn8+AroHbsIz+JjwxQDxbp+7y5OYCI8t1Yk7etjD9CRd2hIw==}
-    dependencies:
-      buffer-from: 1.1.2
-      source-map: 0.6.1
-    dev: true
 
   /source-map-support/0.5.21:
     resolution: {integrity: sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w==}
@@ -22226,16 +22211,6 @@ packages:
       commander: 2.20.3
       source-map: 0.7.3
       source-map-support: 0.5.21
-    dev: true
-
-  /terser/5.8.0:
-    resolution: {integrity: sha512-f0JH+6yMpneYcRJN314lZrSwu9eKkUFEHLN/kNy8ceh8gaRiLgFPJqrB9HsXjhEGdv4e/ekjTOFxIlL6xlma8A==}
-    engines: {node: '>=10'}
-    hasBin: true
-    dependencies:
-      commander: 2.20.3
-      source-map: 0.7.3
-      source-map-support: 0.5.20
     dev: true
 
   /terser/5.9.0:
