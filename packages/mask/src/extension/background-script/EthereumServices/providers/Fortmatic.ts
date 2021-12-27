@@ -60,9 +60,9 @@ function send(payload: JsonRpcPayload, callback: (error: Error | null, response?
 }
 //#endregion
 
-let web3: Web3 | null = null
-
 export class FortmaticProvider implements Provider {
+    private web3: Web3 | null = null
+
     async createProvider() {
         return {
             request,
@@ -71,9 +71,9 @@ export class FortmaticProvider implements Provider {
         }
     }
     async createWeb3() {
-        if (web3) return web3
-        web3 = new Web3(await this.createProvider())
-        return web3
+        if (this.web3) return this.web3
+        this.web3 = new Web3(await this.createProvider())
+        return this.web3
     }
     async requestAccounts(chainId?: ChainId) {
         if (!chainId) throw new Error('Please give a chain id.')

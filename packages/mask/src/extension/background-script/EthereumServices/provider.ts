@@ -3,6 +3,9 @@ import { defer } from '@masknet/shared-base'
 import { ChainId, createLookupTableResolver, ProviderType } from '@masknet/web3-shared-evm'
 import * as WalletConnect from './providers/WalletConnect'
 import * as Injected from './providers/Injected'
+import { MaskWalletProvider } from './providers/MaskWallet'
+import { MetaMaskProvider } from './providers/MetaMask'
+import { WalletConnectProvider } from './providers/WalletConnect'
 import { CustomNetworkProvider } from './providers/CustomNetwork'
 import { FortmaticProvider } from './providers/Fortmatic'
 import type { Provider } from './types'
@@ -10,9 +13,9 @@ import { currentChainIdSettings, currentProviderSettings } from '../../../plugin
 
 const getProviderInternal = createLookupTableResolver<ProviderType, Provider | null>(
     {
-        [ProviderType.MaskWallet]: null,
-        [ProviderType.MetaMask]: null,
-        [ProviderType.WalletConnect]: null,
+        [ProviderType.MaskWallet]: new MaskWalletProvider(),
+        [ProviderType.MetaMask]: new MetaMaskProvider(),
+        [ProviderType.WalletConnect]: new WalletConnectProvider(),
         [ProviderType.CustomNetwork]: new CustomNetworkProvider(),
         [ProviderType.Coin98]: null,
         [ProviderType.WalletLink]: null,
